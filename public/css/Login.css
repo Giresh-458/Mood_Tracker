@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,12 +13,13 @@ body {
 body::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top:0; left:0; right:0; bottom:0;
   background: rgba(0, 123, 255, 0.35);
   z-index: 1;
 }
 
-.login-container {
+
+.login-container, .container {
   position: relative;
   z-index: 10;
   background: rgba(255, 255, 255, 0.15);
@@ -26,22 +27,24 @@ body::before {
   border-radius: 20px;
   padding: 40px;
   width: 350px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   text-align: center;
   color: white;
 }
 
-.login-container h1 {
+h1 {
   font-size: 28px;
   margin-bottom: 10px;
 }
 
-.login-container p.text1 {
+.text1 {
   font-size: 14px;
   margin-bottom: 20px;
   color: #cce0ff; 
   line-height: 1.5;
 }
+
 
 input {
   width: 100%;
@@ -55,23 +58,39 @@ input {
   color: #333;
 }
 
-button {
+
+button, .button, .button2 {
   width: 100%;
   padding: 12px;
-  background: #007bff; 
-  border: none;
   border-radius: 10px;
+  border: none;
   font-size: 16px;
   font-weight: bold;
   color: white;
   cursor: pointer;
   margin-top: 15px;
   transition: 0.3s;
+  background: #007bff;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
-button:hover {
-  background: #0056b3; 
+button:hover, .button:hover, .button2:hover {
+  background: #0056b3;
 }
+
+
+.button2 {
+  background: rgba(255,255,255,0.3);
+  color: white;
+  margin-top: 10px;
+}
+
+.button2:hover {
+  background: rgba(255,255,255,0.5);
+}
+
 
 .footer {
   margin-top: 20px;
@@ -89,9 +108,23 @@ button:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 400px) {
-  .login-container {
+
+@media(max-width: 400px) {
+  .login-container, .container {
     width: 90%;
     padding: 30px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input, button, .button, .button2 {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .text1, .footer {
+    font-size: 13px;
   }
 }

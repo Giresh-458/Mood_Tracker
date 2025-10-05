@@ -133,9 +133,33 @@ button#btn:hover {
   color: #0056b3;
 }
 
-@media(max-width:500px){
+@media(max-width: 500px){
+  .container {
+    padding: 20px;
+  }
+
+  .container h1.text1 {
+    font-size: 20px;
+  }
+
   .container2 {
     width: 60px;
     font-size: 16px;
+    padding: 10px;
+  }
+
+  .textarea textarea {
+    min-height: 80px;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  button#btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .navbar .nav-link, .navbar .logout-btn {
+    font-size: 12px;
   }
 }

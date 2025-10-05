@@ -52,6 +52,7 @@ body::before {
   margin-bottom: 10px;
   color: #cce0ff; 
 }
+
 .streak {
   font-size: 16px;
   margin-bottom: 20px;
@@ -168,6 +169,7 @@ body::before {
   border-radius: 8px;
   border: none;
   outline: none;
+  font-size: 14px;
 }
 
 .modal-content button {
@@ -194,4 +196,46 @@ body::before {
 @keyframes fadeIn {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+@media(max-width: 420px) {
+  .profile-card {
+    padding: 30px 20px;
+  }
+
+  .avatar img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-name {
+    font-size: 22px;
+  }
+
+  .streak {
+    font-size: 14px;
+  }
+
+  .container1 {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .profile-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal-content input {
+    font-size: 13px;
+    padding: 8px;
+  }
 }

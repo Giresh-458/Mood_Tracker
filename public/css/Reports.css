@@ -65,6 +65,8 @@ body::before {
 .container4 {
   width: 100%;
   max-width: 430px;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .container4 h2.text4 {
@@ -73,8 +75,14 @@ body::before {
   color: #cce0ff;
 }
 
+canvas {
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
 .entries-row {
   margin-top: 20px;
+  padding: 0 10px;
 }
 
 .entries-list {
@@ -84,17 +92,24 @@ body::before {
   max-height: 300px;
   overflow-y: auto;
   padding: 5px;
+  scroll-behavior: smooth;
 }
 
 .entry-card {
   background: rgba(255,255,255,0.85);
   color: #333;
   border-radius: 12px;
-  padding: 10px;
+  padding: 12px;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  transition: 0.3s;
+}
+
+.entry-card:hover {
+  box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+  transform: translateY(-2px);
 }
 
 .entry-card .entry-date {
@@ -157,5 +172,30 @@ body::before {
   }
   .container4 {
     max-width: 90%;
+  }
+}
+
+@media(max-width:600px){
+  .container4 {
+    padding: 15px;
+  }
+  .entries-list {
+    max-height: 250px;
+  }
+}
+
+@media(max-width:500px){
+  .delete-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+@media(max-width:400px){
+  .navbar {
+    padding: 8px 0;
+  }
+  .navbar .nav-link {
+    font-size: 12px;
   }
 }
