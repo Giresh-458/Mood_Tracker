@@ -7,7 +7,7 @@ const session = require("express-session")
 const bcrypt=require("bcrypt")
 const PDFDocument = require("pdfkit");
 
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT
