@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Diary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Handlee&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="../css/Home.css">
+</head>
+<body>
+  <div class="main-area">
+    <div class="container">
+      <h1 class="text1">How are you feeling today, Cozy Friend?</h1>
+      <div class="mood-row">
+        <div class="container2" data-mood="Happy">😄<br>Happy</div>
+        <div class="container2" data-mood="Sad">😔<br>Sad</div>
+        <div class="container2" data-mood="Angry">😡<br>Angry</div>
+        <div class="container2" data-mood="Loved">🥰<br>Loved</div>
+        <div class="container2" data-mood="Relaxed">😌<br>Relaxed</div>
+        <div class="container2" data-mood="Playful">🥳<br>Playful</div>
+      </div>
+      <div class="textarea">
+        <textarea id="note" placeholder="Dear Diary, Today I feel..." required></textarea>
+      </div>
+      <button type="button" class="button" id="btn">Save Mood</button>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <a href="/home" class="nav-link active">Home</a>
+    <a href="/Reports" class="nav-link">Reports</a>
+    <a href="/profile" class="nav-link">Profile</a>
+    <form action="/logout" method="post" style="display:inline;">
+      <button type="submit" class="logout-btn">Logout</button>
+    </form>
+  </nav>
+
+  <script>
+    const containers = document.querySelectorAll('.container2');
+    let selectedMood = null;
+
+    containers.forEach(container => {
+      container.addEventListener('click', () => {
+        containers.forEach(c => c.classList.remove('selected'));
+        container.classList.add('selected');
+        selectedMood = container.dataset.mood;
+      });
+    });
+
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", () => {
+      const note = document.getElementById("note").value.trim();
+
+      if (!selectedMood) {
+        alert("Please select a mood first!");
+        return;
+      }
+      if (!note) {
+        alert("Please write something in your diary!");
+        return;
+      }
+
+      axios.post("/home", { mood: selectedMood, note })
+        .then(res => {
+          selectedMood = null;
+          document.getElementById("note").value = "";
+          containers.forEach(c => c.classList.remove('selected'));
+          window.location.reload();
+        })
+        .catch(err => console.error(err));
+    });
+  </script>
+</body>
+</html>
