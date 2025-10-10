@@ -51,7 +51,7 @@ app.post("/pass",async (req,res)=>{
         res.redirect("/")
     }
     if(req.session.user.Username=="giresh"){
-        res.render("Home",{msg: "Demo User cannot be deleted..."})
+        res.render("Home",{msg: "Demo pass cannot be updated..."})
         return
     }
     const {Current,New}=req.body
@@ -98,7 +98,7 @@ app.post("/edit1",async (req,res)=>{
         return res.redirect("/")
     }
     if(req.session.user.Username=="giresh"){
-        res.render("Home",{msg: "Demo User cannot be deleted..."})
+        res.render("Home",{msg: "Demo User cannot be updated..."})
         return
     }
 
