@@ -43,8 +43,7 @@ app.post("/",async(req,res)=>{
         return res.render("Login",{msg:"Password Incorrect"})
     }
     req.session.user={id:user._id,Username:user.Username,entries:user.entries}
-    res.redirect("/home")
-    
+    res.redirect("/home")    
 })
 
 app.post("/pass",async (req,res)=>{
@@ -127,6 +126,10 @@ res.redirect("/profile")
 app.get("/delete",async(req,res)=>{
     if(!req.session.user){
         return res.redirect("/")
+    }
+    if(req.session.user.Username=="giresh"){
+        res.render("Home",{msg: "Demo User cannot be deleted..."})
+        return
     }
     const user=await User.findOneAndDelete({Username: req.session.user.Username})
     req.session.destroy(); 
