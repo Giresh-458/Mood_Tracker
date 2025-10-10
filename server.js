@@ -50,6 +50,10 @@ app.post("/pass",async (req,res)=>{
     if(!req.session.user){
         res.redirect("/")
     }
+    if(req.session.user.Username=="giresh"){
+        res.render("Home",{msg: "Demo User cannot be deleted..."})
+        return
+    }
     const {Current,New}=req.body
     const user = await User.findOne({Username:req.session.user.Username})
     const isValid = await bcrypt.compare(Current,user.Password)
@@ -93,7 +97,11 @@ app.post("/edit1",async (req,res)=>{
     if(!req.session.user){
         return res.redirect("/")
     }
-    console.log(req.body)
+    if(req.session.user.Username=="giresh"){
+        res.render("Home",{msg: "Demo User cannot be deleted..."})
+        return
+    }
+
     let {UserName, Age, Email, Password}=req.body
     let user=await User.findOne({Username: req.session.user.Username})
         if(!UserName){
